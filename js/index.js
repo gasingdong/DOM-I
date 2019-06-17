@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const siteContent = {
   'nav': {
     'nav-item-1': 'Services',
