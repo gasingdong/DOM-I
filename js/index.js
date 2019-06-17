@@ -90,3 +90,12 @@ setTextContentMulti(
 );
 
 setImgSrc(query('#middle-img'), 'main-content', 'middle-img-src');
+setTextContent(query('.contact h4'), 'contact', 'contact-h4');
+setTextContentMulti(
+  queryAll('.contact p'),
+  'contact',
+  'address',
+  'phone',
+  'email'
+);
+setTextContent(query('footer p'), 'footer', 'copyright');
