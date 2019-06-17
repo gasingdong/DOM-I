@@ -50,7 +50,7 @@ const query = selector => document.querySelector(selector);
 const queryAll = selector => document.querySelectorAll(selector);
 const setTextContent = (element, firstKey, secondKey) =>
   (element.textContent = siteContent[firstKey][secondKey]);
-const setTextContentMulti = (arr, element, firstKey, ...secondKey) => {
+const setTextContentMulti = (arr, firstKey, ...secondKey) => {
   arr.forEach(
     (element, index) =>
       (element.textContent = siteContent[firstKey][secondKey[index]])
@@ -68,3 +68,13 @@ setTextContent(query('.cta-text h1'), 'cta', 'h1');
 setTextContent(query('.cta-text button'), 'cta', 'button');
 
 setImgSrc(query('#cta-img'), 'cta', 'img-src');
+
+setTextContentMulti(
+  queryAll('.main-content h4'),
+  'main-content',
+  'features-h4',
+  'about-h4',
+  'services-h4',
+  'product-h4',
+  'vision-h4'
+);
