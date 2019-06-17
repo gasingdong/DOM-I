@@ -78,3 +78,15 @@ setTextContentMulti(
   'product-h4',
   'vision-h4'
 );
+
+setTextContentMulti(
+  queryAll('.main-content p'),
+  'main-content',
+  'features-content',
+  'about-content',
+  'services-content',
+  'product-content',
+  'vision-content'
+);
+
+setImgSrc(query('#middle-img'), 'main-content', 'middle-img-src');
