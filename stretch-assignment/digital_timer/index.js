@@ -21,7 +21,7 @@ function startTimer() {
     msHundreds.textContent = Math.floor((count % 1) * 10);
     msTens.textContent = Math.floor((count % 0.1) * 100);
 
-    if (count >= 2) {
+    if (count >= 10) {
       clearInterval(timer);
       document.querySelector('.digits').style.color = 'red';
       reset.disabled = false;
