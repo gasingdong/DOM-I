@@ -46,6 +46,7 @@ const siteContent = {
 let logo = document.getElementById('logo-img');
 logo.setAttribute('src', siteContent['nav']['img-src']);
 
+// Functions
 const query = selector => document.querySelector(selector);
 const queryAll = selector => document.querySelectorAll(selector);
 const setTextContent = (element, firstKey, secondKey) =>
@@ -59,16 +60,20 @@ const setTextContentMulti = (arr, firstKey, ...secondKey) => {
 const setImgSrc = (element, firstKey, secondKey) =>
   (element.src = siteContent[firstKey][secondKey]);
 
+// ===========================TASK 2==================================
+
+// Navigation
 queryAll('nav a').forEach(
   (element, index) =>
     (element.textContent = siteContent['nav'][`nav-item-${index + 1}`])
 );
 
+// Header
 setTextContent(query('.cta-text h1'), 'cta', 'h1');
 setTextContent(query('.cta-text button'), 'cta', 'button');
-
 setImgSrc(query('#cta-img'), 'cta', 'img-src');
 
+// Main Content
 setTextContentMulti(
   queryAll('.main-content h4'),
   'main-content',
@@ -78,7 +83,6 @@ setTextContentMulti(
   'product-h4',
   'vision-h4'
 );
-
 setTextContentMulti(
   queryAll('.main-content p'),
   'main-content',
@@ -88,8 +92,9 @@ setTextContentMulti(
   'product-content',
   'vision-content'
 );
-
 setImgSrc(query('#middle-img'), 'main-content', 'middle-img-src');
+
+// Contact
 setTextContent(query('.contact h4'), 'contact', 'contact-h4');
 setTextContentMulti(
   queryAll('.contact p'),
@@ -98,4 +103,6 @@ setTextContentMulti(
   'phone',
   'email'
 );
+
+// Footer
 setTextContent(query('footer p'), 'footer', 'copyright');
