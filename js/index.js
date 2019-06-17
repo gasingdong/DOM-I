@@ -9,7 +9,7 @@ const siteContent = {
     'img-src': 'img/logo.png',
   },
   'cta': {
-    'h1': 'DOM Is Awesome',
+    'h1': 'DOM<br>Is<br>Awesome',
     'button': 'Get Started',
     'img-src': 'img/header-img.png',
   },
@@ -69,12 +69,7 @@ queryAll('nav a').forEach(
 );
 
 // Header
-const header = query('.cta-text h1');
-const headerText = ['DOM', 'Is', 'Awesome'];
-for (let s of headerText) {
-  header.appendChild(document.createTextNode(s));
-  header.appendChild(document.createElement('br'));
-}
+query('.cta-text h1').innerHTML = siteContent['cta']['h1'];
 setTextContent(query('.cta-text button'), 'cta', 'button');
 setImgSrc(query('#cta-img'), 'cta', 'img-src');
 
@@ -166,13 +161,21 @@ function toggleStyle() {
   const logo = query('#logo-img');
   return () => {
     style = style === styles.DARK ? styles.LIGHT : styles.DARK;
+
+    // Body
     body.style.backgroundColor = styleValues['backgroundColor'][style];
     body.style.color = styleValues['color'][style];
+
+    // Buttons
     button.style.backgroundColor = styleValues['backgroundColor'][style];
     button.style.color = styleValues['color'][style];
     button.style.border = styleValues['border'][style];
+
+    // Navigation & Logo
     nav.forEach(element => (element.style.color = styleValues['nav'][style]));
     logo.src = styleValues['logo'][style];
+
+    // Main-Content
     mainBody.style.borderTop = styleValues['borderContent'][style];
     mainBody.style.borderBottom = styleValues['borderContent'][style];
   };
