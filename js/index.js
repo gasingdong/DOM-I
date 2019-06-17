@@ -183,3 +183,35 @@ function toggleStyle() {
 
 const styleHandler = new toggleStyle();
 query('button').addEventListener('click', () => styleHandler());
+
+// =========================== SUPER STRETCH ==================================
+// Initialize starting values
+let count = 5;
+const domHeader = query('.cta-text h1');
+
+// Attached to the logo image
+function startTimer() {
+  domHeader.textContent = count;
+  const timer = setInterval(() => {
+    count--;
+    domHeader.textContent = count;
+
+    if (count < 0) {
+      clearInterval(timer);
+      count = 5;
+      domHeader.innerHTML = siteContent['cta']['h1'];
+
+      // Play a sound at the end of the countdown
+      const audio = new Audio(
+        'https://interactive-examples.mdn.mozilla.net/media/examples/t-rex-roar.mp3'
+      );
+      audio.play();
+    }
+  }, 1000);
+}
+
+query('#logo-img').onclick = () => {
+  if (count >= 5) {
+    startTimer();
+  }
+};
