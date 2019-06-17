@@ -119,3 +119,40 @@ const nav = query('nav');
 nav.prepend(home);
 nav.appendChild(partners);
 queryAll('nav a').forEach(element => (element.style.color = 'green'));
+
+// =========================== STRETCH ==================================
+const styles = {
+  backgroundColor: {
+    dark: 'black',
+    light: 'white',
+  },
+  color: {
+    dark: 'white',
+    light: 'black',
+  },
+  border: {
+    dark: '1px solid white',
+    light: '1px solid black',
+  },
+};
+
+function toggleStyle() {
+  let style = 'light';
+  const body = query('body');
+  const button = query('button');
+  return () => {
+    if (style === 'dark') {
+      style = 'light';
+    } else {
+      style = 'dark';
+    }
+    body.style.backgroundColor = styles['backgroundColor'][style];
+    body.style.color = styles['color'][style];
+    button.style.backgroundColor = styles['backgroundColor'][style];
+    button.style.color = styles['color'][style];
+    button.style.border = styles['border'][style];
+  };
+}
+
+const styleHandler = new toggleStyle();
+query('button').addEventListener('click', () => styleHandler());
