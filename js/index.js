@@ -48,8 +48,19 @@ logo.setAttribute('src', siteContent['nav']['img-src']);
 
 const query = selector => document.querySelector(selector);
 const queryAll = selector => document.querySelectorAll(selector);
+const setTextContent = (element, firstKey, secondKey) =>
+  (element.textContent = siteContent[firstKey][secondKey]);
+const setTextContentMulti = (arr, element, firstKey, ...secondKey) => {
+  arr.forEach(
+    (element, index) =>
+      (element.textContent = siteContent[firstKey][secondKey[index]])
+  );
+};
 
 queryAll('nav a').forEach(
   (element, index) =>
     (element.textContent = siteContent['nav'][`nav-item-${index + 1}`])
 );
+
+setTextContent(query('.cta-text h1'), 'cta', 'h1');
+setTextContent(query('.cta-text button'), 'cta', 'button');
