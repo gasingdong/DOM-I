@@ -60,7 +60,7 @@ const setTextContentMulti = (arr, firstKey, ...secondKey) => {
 const setImgSrc = (element, firstKey, secondKey) =>
   (element.src = siteContent[firstKey][secondKey]);
 
-// ===========================TASK 2==================================
+// =========================== TASK 2 ==================================
 
 // Navigation
 queryAll('nav a').forEach(
@@ -106,3 +106,16 @@ setTextContentMulti(
 
 // Footer
 setTextContent(query('footer p'), 'footer', 'copyright');
+
+// =========================== TASK 3 ==================================
+const newLink = text => {
+  const link = document.createElement('a');
+  link.textContent = text;
+  return link;
+};
+const home = newLink('Home');
+const partners = newLink('Partners');
+const nav = query('nav');
+nav.prepend(home);
+nav.appendChild(partners);
+queryAll('nav a').forEach(element => (element.style.color = 'green'));
