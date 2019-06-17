@@ -56,6 +56,8 @@ const setTextContentMulti = (arr, element, firstKey, ...secondKey) => {
       (element.textContent = siteContent[firstKey][secondKey[index]])
   );
 };
+const setImgSrc = (element, firstKey, secondKey) =>
+  (element.src = siteContent[firstKey][secondKey]);
 
 queryAll('nav a').forEach(
   (element, index) =>
@@ -64,3 +66,5 @@ queryAll('nav a').forEach(
 
 setTextContent(query('.cta-text h1'), 'cta', 'h1');
 setTextContent(query('.cta-text button'), 'cta', 'button');
+
+setImgSrc(query('#cta-img'), 'cta', 'img-src');
