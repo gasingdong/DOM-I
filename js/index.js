@@ -69,7 +69,12 @@ queryAll('nav a').forEach(
 );
 
 // Header
-setTextContent(query('.cta-text h1'), 'cta', 'h1');
+const header = query('.cta-text h1');
+const headerText = ['DOM', 'Is', 'Awesome'];
+for (let s of headerText) {
+  header.appendChild(document.createTextNode(s));
+  header.appendChild(document.createElement('br'));
+}
 setTextContent(query('.cta-text button'), 'cta', 'button');
 setImgSrc(query('#cta-img'), 'cta', 'img-src');
 
