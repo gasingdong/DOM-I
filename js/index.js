@@ -122,35 +122,54 @@ queryAll('nav a').forEach(element => (element.style.color = 'green'));
 
 // =========================== STRETCH ==================================
 const styles = {
+  DARK: 'dark',
+  LIGHT: 'light',
+};
+const styleValues = {
   backgroundColor: {
-    dark: 'black',
+    dark: '#121212',
     light: 'white',
   },
   color: {
-    dark: 'white',
+    dark: '#d7d7d7',
     light: 'black',
   },
   border: {
     dark: '1px solid white',
     light: '1px solid black',
   },
+  nav: {
+    dark: 'white',
+    light: 'green',
+  },
+  logo: {
+    dark: 'img/logo-dark.png',
+    light: 'img/logo.png',
+  },
+  borderContent: {
+    dark: '2px solid white',
+    light: '2px solid black',
+  },
 };
 
 function toggleStyle() {
-  let style = 'light';
+  let style = styles.LIGHT;
   const body = query('body');
   const button = query('button');
+  const mainBody = query('.main-content');
+  const nav = queryAll('nav a');
+  const logo = query('#logo-img');
   return () => {
-    if (style === 'dark') {
-      style = 'light';
-    } else {
-      style = 'dark';
-    }
-    body.style.backgroundColor = styles['backgroundColor'][style];
-    body.style.color = styles['color'][style];
-    button.style.backgroundColor = styles['backgroundColor'][style];
-    button.style.color = styles['color'][style];
-    button.style.border = styles['border'][style];
+    style = style === styles.DARK ? styles.LIGHT : styles.DARK;
+    body.style.backgroundColor = styleValues['backgroundColor'][style];
+    body.style.color = styleValues['color'][style];
+    button.style.backgroundColor = styleValues['backgroundColor'][style];
+    button.style.color = styleValues['color'][style];
+    button.style.border = styleValues['border'][style];
+    nav.forEach(element => (element.style.color = styleValues['nav'][style]));
+    logo.src = styleValues['logo'][style];
+    mainBody.style.borderTop = styleValues['borderContent'][style];
+    mainBody.style.borderBottom = styleValues['borderContent'][style];
   };
 }
 
