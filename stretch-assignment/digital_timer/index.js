@@ -20,13 +20,13 @@ function startTimer() {
   reset.disabled = true;
   stop.disabled = false;
   timer = setInterval(() => {
-    count = count + 0.01;
-    secondTens.textContent = Math.floor(count / 10);
-    secondOnes.textContent = Math.floor(count % 10);
-    msHundreds.textContent = Math.floor((count % 1) * 10);
-    msTens.textContent = Math.floor((count % 0.1) * 100);
+    count = count + 10;
+    secondTens.textContent = Math.floor(count / 10000);
+    secondOnes.textContent = Math.floor((count % 10000) / 1000);
+    msHundreds.textContent = Math.floor((count % 1000) / 100);
+    msTens.textContent = Math.floor((count % 100) / 10);
 
-    if (count >= 10) {
+    if (count >= 10000) {
       clearInterval(timer);
       document.querySelector('.digits').style.color = 'red';
       reset.disabled = false;
